@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grayBackground"
+    tools:context=".DiagnoseActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_ds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/padding_horizontal"
+        android:paddingTop="@dimen/padding_vertical_top"
+        tools:ignore="MissingConstraints">
+        <ImageView
+            android:id="@+id/dgs_back"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/ds_back_arrow_img"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="25dp"
+            android:text="Wereng" />
+        
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/dgs_wereng_img"/>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="38dp"
+            android:layout_marginBottom="26dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/greenGeneral"
+                android:layout_marginEnd="45dp"
+                android:text="Diagnosis" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/grayFont"
+                android:text="Rekomendasi" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:justificationMode="inter_word"
+            android:textSize="16sp"
+            android:layout_marginBottom="25dp"
+            android:text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit eos illo cupiditate, placeat odit dicta similique expedita enim in suscipit, tenetur hic aliquam ad fugiat quaerat,illum deserunt dolor dignissimos tenetur hic aliquam ad fugiat quaerat, illum deserunt dolor dignissimos." />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
