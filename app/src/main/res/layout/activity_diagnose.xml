@@ -42,43 +42,71 @@
                 android:src="@drawable/dgs_wereng_img"/>
         </com.google.android.material.card.MaterialCardView>
 
-        <LinearLayout
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="38dp"
-            android:layout_marginBottom="26dp"
-            android:gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/greenGeneral"
-                android:layout_marginEnd="45dp"
-                android:text="Diagnosis" />
+            android:layout_marginVertical="8dp"
+            android:background="@color/grayBackground"
+            app:layout_constraintTop_toBottomOf="@+id/img">
 
-            <TextView
+            <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/grayFont"
-                android:text="Rekomendasi" />
-        </LinearLayout>
+                android:layout_height="wrap_content" />
 
-        <TextView
-            android:layout_width="wrap_content"
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_regular"
-            android:justificationMode="inter_word"
-            android:textSize="16sp"
-            android:layout_marginBottom="25dp"
-            android:text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit eos illo cupiditate, placeat odit dicta similique expedita enim in suscipit, tenetur hic aliquam ad fugiat quaerat,illum deserunt dolor dignissimos tenetur hic aliquam ad fugiat quaerat, illum deserunt dolor dignissimos." />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tab_layout"
+            app:layout_constraintVertical_bias="1.0" />
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:paddingTop="38dp"-->
+<!--            android:layout_marginBottom="26dp"-->
+<!--            android:gravity="center">-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/poppins_regular"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/greenGeneral"-->
+<!--                android:layout_marginEnd="45dp"-->
+<!--                android:text="Diagnosis" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/poppins_regular"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/grayFont"-->
+<!--                android:text="Rekomendasi" />-->
+<!--        </LinearLayout>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:fontFamily="@font/poppins_regular"-->
+<!--            android:justificationMode="inter_word"-->
+<!--            android:textSize="16sp"-->
+<!--            android:layout_marginBottom="25dp"-->
+<!--            android:text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit eos illo cupiditate, placeat odit dicta similique expedita enim in suscipit, tenetur hic aliquam ad fugiat quaerat,illum deserunt dolor dignissimos tenetur hic aliquam ad fugiat quaerat, illum deserunt dolor dignissimos." />-->
 
     </LinearLayout>
 
