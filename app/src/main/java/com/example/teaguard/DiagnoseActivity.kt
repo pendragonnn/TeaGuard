@@ -9,11 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
+import com.example.teaguard.databinding.ActivityDiagnoseBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class DiagnoseActivity : AppCompatActivity() {
-    private lateinit var imgActivityBack: ImageView
+    private lateinit var binding: ActivityDiagnoseBinding
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,12 +27,13 @@ class DiagnoseActivity : AppCompatActivity() {
             insets
         }
 
-        val mViewPager: ViewPager2 = findViewById(R.id.view_pager)
-        val mTabLayout: TabLayout = findViewById(R.id.tab_layout)
+        binding = ActivityDiagnoseBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        mViewPager.adapter = VPAdapter(this)
 
-        TabLayoutMediator(mTabLayout, mViewPager) {
+        binding.viewPager.adapter = VPAdapter(this)
+
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) {
             tab, position ->
             when(position) {
                 0 -> tab.text = "Diagnosa"
@@ -39,10 +41,10 @@ class DiagnoseActivity : AppCompatActivity() {
             }
         }.attach()
 
-        imgActivityBack = findViewById(R.id.dgs_back)
-        imgActivityBack.setOnClickListener{
+        binding.dgsBack.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }
