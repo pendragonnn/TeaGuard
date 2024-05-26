@@ -17,5 +17,78 @@
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
+    <!--  DIAGNOSE ACTIVITY START  -->
+
+    <style name="ActivityDiagnoseDiseaseName">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">25dp</item>
+    </style>
+
+    <!--  DIAGNOSE ACTIVITY END  -->
+
+    <!--  DETECTION FRAGMENT START  -->
+
+    <style name="FragmentDetectionTitle">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginBottom">25dp</item>
+    </style>
+
+    <style name="FragmentDetectionCardDate">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/grayFont</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="FragmentDetectionCardDiseaseTitle">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/greenGeneral</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--  DETECTION FRAGMENT END  -->
+
+    <!--  HOME FRAGMENT START  -->
+
+    <style name="FragmentHomeTitle">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FragmentHomeCardTutorial">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="FragmentHomeAnalyzeTitle">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:layout_marginBottom">14dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FragmentHomeCardDate">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/grayFont</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="FragmentHomeCardDiseaseTitle">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/greenGeneral</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--  HOME FRAGMENT END  -->
+
     <style name="Theme.TeaGuard" parent="Base.Theme.TeaGuard" />
 </resources>

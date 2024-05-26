@@ -7,12 +7,9 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        style="@style/FragmentDiagnoseDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:justificationMode="inter_word"
-        android:textSize="16sp"
-        android:layout_marginBottom="25dp"
         android:text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit eos illo cupiditate, placeat odit dicta similique expedita enim in suscipit, tenetur hic aliquam ad fugiat quaerat,illum deserunt dolor dignissimos tenetur hic aliquam ad fugiat quaerat, illum deserunt dolor dignissimos." />
 
 </FrameLayout>

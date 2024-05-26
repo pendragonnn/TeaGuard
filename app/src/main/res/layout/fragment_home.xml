@@ -14,13 +14,10 @@
             android:paddingHorizontal="@dimen/padding_horizontal"
             android:paddingTop="@dimen/padding_vertical_top">
             <TextView
+                style="@style/FragmentHomeTitle"
                 android:id="@+id/tv_headline_home_screen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:fontFamily="@font/poppins_regular"
-                android:textSize="18sp"
-                android:textStyle="bold"
                 android:text="Sembuhkan tanaman anda" />
 
             <com.google.android.material.card.MaterialCardView
@@ -50,11 +47,9 @@
                             android:layout_marginBottom="10dp"
                             android:src="@drawable/hs_camera_img" />
                         <TextView
+                            style="@style/FragmentHomeCardTutorial"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textAlignment="center"
-                            android:textSize="14sp"
                             android:text="Analisis Gambar" />
                     </LinearLayout>
                     <ImageView
@@ -73,24 +68,19 @@
                             android:layout_marginBottom="10dp"
                             android:src="@drawable/hs_result_img" />
                         <TextView
+                            style="@style/FragmentHomeCardTutorial"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textAlignment="center"
-                            android:textSize="14sp"
                             android:text="Analisis Hasil" />
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
+                style="@style/FragmentHomeAnalyzeTitle"
                 android:id="@+id/tv_headline2_home_screen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="14dp"
-                android:fontFamily="@font/poppins_regular"
-                android:textSize="14sp"
-                android:textStyle="bold"
                 android:text="Hasil Analisis" />
 
             <com.google.android.material.card.MaterialCardView
@@ -122,21 +112,16 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp">
                         <TextView
+                            style="@style/FragmentHomeCardDate"
                             android:id="@+id/title_wereng"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/grayFont"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textSize="14sp"
                             android:text="11 November 2023" />
                         <TextView
+                            style="@style/FragmentHomeCardDiseaseTitle"
                             android:layout_below="@id/title_wereng"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/greenGeneral"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
                             android:text="Wereng" />
                         <ImageView
                             android:id="@+id/img_arrow2"
