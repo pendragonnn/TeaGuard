@@ -8,11 +8,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import com.example.teaguard.databinding.ActivityMainBinding
 import com.google.android.material.card.MaterialCardView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var cardMoveActivityDiagnose: MaterialCardView
-    private lateinit var boxMoveActivityMenu: LinearLayout
+    private lateinit var binding: ActivityMainBinding
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,17 +25,31 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        replaceFragment(HomeFragment())
 
-        cardMoveActivityDiagnose = findViewById(R.id.cd_home_screen_analyze)
-        cardMoveActivityDiagnose.setOnClickListener{
-            val intent = Intent(this, DiagnoseActivity::class.java)
-            startActivity(intent)
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.home -> {
+                    replaceFragment(HomeFragment())
+                    true
+                }
+                R.id.detection -> {
+                    replaceFragment(DetectionFragment())
+                    true
+                }
+
+                else -> false
+            }
         }
 
-        boxMoveActivityMenu = findViewById(R.id.ll_detection)
-        boxMoveActivityMenu.setOnClickListener{
-            val intent = Intent(this, DetectionActivity::class.java)
-            startActivity(intent)
-        }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout, fragment)
+        fragmentTransaction.commit()
     }
 }

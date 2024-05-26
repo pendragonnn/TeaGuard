@@ -16,9 +16,6 @@
             android:name=".DiagnoseActivity"
             android:exported="false" />
         <activity
-            android:name=".DetectionActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
