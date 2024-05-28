@@ -24,7 +24,7 @@
                 android:id="@+id/cd_home_screen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="34dp"
+                android:layout_marginBottom="28dp"
                 app:cardElevation="2dp"
                 app:cardCornerRadius="15dp">
                 <LinearLayout
@@ -76,6 +76,18 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <Button
+                android:id="@+id/btn_hs_camera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Gunakan Kamera" />
+
+            <Button
+                android:id="@+id/btn_hs_gallery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ambil dari Galeri" />
             <TextView
                 style="@style/FragmentHomeAnalyzeTitle"
                 android:id="@+id/tv_headline2_home_screen"
