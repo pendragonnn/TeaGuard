@@ -1,8 +1,10 @@
-package com.example.teaguard
+package com.example.teaguard.foundation.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.teaguard.ui.diagnose.DiagnoseFragment
+import com.example.teaguard.ui.diagnose.RecommendationFragment
 
 class VPAdapter(fa: FragmentActivity): FragmentStateAdapter(fa) {
     override fun getItemCount(): Int {

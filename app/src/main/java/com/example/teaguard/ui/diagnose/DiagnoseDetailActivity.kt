@@ -1,19 +1,19 @@
-package com.example.teaguard
+package com.example.teaguard.ui.diagnose
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.viewpager2.widget.ViewPager2
+import com.example.teaguard.ui.MainActivity
+import com.example.teaguard.R
 import com.example.teaguard.databinding.ActivityDiagnoseBinding
-import com.google.android.material.tabs.TabLayout
+import com.example.teaguard.foundation.adapter.VPAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
-class DiagnoseActivity : AppCompatActivity() {
+class DiagnoseDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDiagnoseBinding
 
     @SuppressLint("MissingInflatedId")

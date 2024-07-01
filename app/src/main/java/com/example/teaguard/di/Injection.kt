@@ -1,0 +1,15 @@
+package com.example.teaguard.di
+
+import android.content.Context
+import com.example.teaguard.data.local.room.HistoryDatabase
+import com.example.teaguard.data.repository.HistoryDiagnoseRepository
+
+object Injection {
+fun provideDiagnoseRepository(context : Context) : HistoryDiagnoseRepository {
+    val database = HistoryDatabase.getDatabase(context)
+    val dao = database.historyDao()
+
+    return HistoryDiagnoseRepository.getInstance(dao)
+    }
+
+}

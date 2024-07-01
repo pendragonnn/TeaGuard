@@ -1,17 +1,16 @@
-package com.example.teaguard
+package com.example.teaguard.ui
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.example.teaguard.R
 import com.example.teaguard.databinding.ActivityMainBinding
-import com.google.android.material.card.MaterialCardView
+import com.example.teaguard.ui.detection.DetectionFragment
+import com.example.teaguard.ui.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

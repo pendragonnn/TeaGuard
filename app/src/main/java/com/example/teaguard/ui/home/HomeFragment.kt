@@ -1,40 +1,35 @@
-package com.example.teaguard
+package com.example.teaguard.ui.home
 
+import android.Manifest
 import android.app.Activity
 import android.app.Application
-import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.media.Image
 import android.media.ThumbnailUtils
-import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.content.contentValuesOf
+import androidx.fragment.app.Fragment
 import com.example.teaguard.databinding.FragmentHomeBinding
 import com.example.teaguard.ml.Model1
+import com.example.teaguard.ui.diagnose.DiagnoseDetailActivity
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.IOException
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 /**
  * A simple [Fragment] subclass.
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
 class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -63,12 +58,16 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.cdHomeScreenAnalyze.setOnClickListener {
-            val intent = Intent(activity, DiagnoseActivity::class.java)
+            val intent = Intent(activity, DiagnoseDetailActivity::class.java)
             startActivity(intent)
         }
 
         binding.btnHsCamera.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.CAMERA
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
                 val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 startActivityForResult(cameraIntent, 3)
             } else {
@@ -78,7 +77,8 @@ class HomeFragment : Fragment() {
 
 
         binding.btnHsGallery.setOnClickListener {
-            val cameraIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            val cameraIntent =
+                Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(cameraIntent, 1)
         }
     }
@@ -101,7 +101,8 @@ class HomeFragment : Fragment() {
                 var image: Bitmap? = null
                 try {
                     if (dat != null) {
-                        image = MediaStore.Images.Media.getBitmap(Application().contentResolver, dat)
+                        image =
+                            MediaStore.Images.Media.getBitmap(Application().contentResolver, dat)
                     }
                 } catch (e: IOException) {
                     e.printStackTrace()
@@ -121,7 +122,8 @@ class HomeFragment : Fragment() {
         val model = context?.let { Model1.newInstance(it) }
 
         // Creates inputs for reference.
-        val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 256, 256, 3), DataType.FLOAT32)
+        val inputFeature0 =
+            TensorBuffer.createFixedSize(intArrayOf(1, 256, 256, 3), DataType.FLOAT32)
         val byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3)
         byteBuffer.order(ByteOrder.nativeOrder())
 
