@@ -20,6 +20,7 @@ import com.example.teaguard.R
 import com.example.teaguard.databinding.FragmentHomeBinding
 import com.example.teaguard.ml.Model1
 import com.example.teaguard.ui.ViewModelFactory
+import com.example.teaguard.ui.diagnose.DiagnoseDetailActivity
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.IOException
@@ -69,6 +70,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val cameraIntent =
                 Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(cameraIntent, 1)
+        }
+        binding.cdHomeScreenAnalyze.setOnClickListener {
+            val intent = Intent(activity, DiagnoseDetailActivity::class.java)
+            startActivity(intent)
         }
     }
 

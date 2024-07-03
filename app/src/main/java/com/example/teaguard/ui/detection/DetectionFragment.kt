@@ -42,7 +42,10 @@ class DetectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        binding.dsLrHomeScreenCardAnalyze.setOnClickListener {
+            val intent = Intent(activity, DiagnoseDetailActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     companion object {
