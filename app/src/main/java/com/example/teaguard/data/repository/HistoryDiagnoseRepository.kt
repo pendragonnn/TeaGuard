@@ -22,6 +22,7 @@ class HistoryDiagnoseRepository private constructor(
         historyDiagnoseDao.delete(historyDiagnose)
     }
 
+
     companion object {
         @Volatile
         private var instance: HistoryDiagnoseRepository? = null

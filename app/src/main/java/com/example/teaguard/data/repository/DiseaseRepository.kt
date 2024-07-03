@@ -2,7 +2,9 @@ package com.example.teaguard.data.repository
 
 import android.provider.ContactsContract.Data
 import com.example.teaguard.data.local.room.HistoryDiagnoseDao
+import com.example.teaguard.data.remote.response.DataDisease
 import com.example.teaguard.data.remote.response.DataItem
+import com.example.teaguard.data.remote.response.DiseaseByIdResponse
 import com.example.teaguard.data.remote.retrofit.ApiConfig
 import com.example.teaguard.data.remote.retrofit.ApiService
 import com.example.teaguard.foundation.utils.Result
@@ -14,7 +16,7 @@ class DiseaseRepository private constructor(
     private val apiService: ApiService
 ) {
 
-    suspend fun getDiseaseById(id: String): Flow<Result<DataItem>> = flow {
+    suspend fun getDiseaseById(id: String): Flow<Result<DiseaseByIdResponse>> = flow {
         emit(Result.Loading)
         val response = apiService.getDiseaseById(id)
         emit(Result.Success(response))
