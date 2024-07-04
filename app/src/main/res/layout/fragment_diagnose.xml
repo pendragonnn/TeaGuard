@@ -11,6 +11,6 @@
         style="@style/FragmentDiagnoseDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit eos illo cupiditate, placeat odit dicta similique expedita enim in suscipit, tenetur hic aliquam ad fugiat quaerat,illum deserunt dolor dignissimos tenetur hic aliquam ad fugiat quaerat, illum deserunt dolor dignissimos." />
+        android:text="Penyakit Algal Leaf disebabkan oleh alga hijau Cephaleuros virescens yang menyerang daun teh, menyebabkan bintik-bintik hijau kusam atau oranye pada daun." />
 
 </FrameLayout>

@@ -20,11 +20,72 @@
             android:layout_height="wrap_content"
             android:text="Hasil Analisis" />
 
-        <androidx.recyclerview.widget.RecyclerView
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            tools:listitem="@layout/item_result"/>-->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cd_home_screen_analyze"
+            app:cardCornerRadius="15dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#4BA26A"
+            android:layout_marginBottom="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/item_result"/>
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/rl_home_screen_card_analyze"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@color/grayBackground"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_result_diagnosis"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp">
+                    <ImageView
+                        android:id="@+id/img_result_diagnosis"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/hs_wereng_img"/>
+                </com.google.android.material.card.MaterialCardView>
 
+                <RelativeLayout
+                    android:id="@+id/analyze_1"
+                    android:layout_toEndOf="@id/card_result_diagnosis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp">
+                    <TextView
+                        style="@style/FragmentHomeCardDate"
+                        android:id="@+id/date_result_diagnosis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11 November 2023" />
+                    <TextView
+                        style="@style/FragmentHomeCardDiseaseTitle"
+                        android:id="@+id/title_result_diagnosis"
+                        android:layout_below="@id/date_result_diagnosis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Algal Leaf" />
+                    <ImageView
+                        android:id="@+id/img_arrow2"
+                        android:layout_below="@id/date_result_diagnosis"
+                        android:layout_toEndOf="@id/date_result_diagnosis"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_margin="12dp"
+                        android:contentDescription="TODO"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/hs_arrow2_img"/>
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
 </FrameLayout>

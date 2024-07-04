@@ -1,8 +1,10 @@
 package com.example.teaguard.ui.home
 
+import ImageClassifier
 import android.Manifest
 import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -22,7 +24,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.teaguard.R
 import com.example.teaguard.data.local.entity.HistoryDiagnose
 import com.example.teaguard.databinding.FragmentHomeBinding
-import com.example.teaguard.foundation.classification.ImageClassifier
+import com.example.teaguard.foundation.utils.saveImageToLocalStorage
 import com.example.teaguard.ml.Model1
 import com.example.teaguard.ui.ViewModelFactory
 import com.example.teaguard.ui.diagnose.DiagnoseDetailActivity
@@ -36,6 +38,10 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.util.Date
+import java.util.Locale
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
@@ -44,7 +50,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding get() = _binding!!
     private var currentImageUri: Uri? = null
     private val viewModel: HomeViewModel by viewModels {
-        ViewModelFactory.getInstance(requireContext())
+        ViewModelFactory.getInstance(requireActivity().application)
     }
 
     override fun onCreateView(
@@ -74,6 +80,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.btnHsGallery.setOnClickListener {
             val cameraIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(cameraIntent, 1)
+        }
+        binding.cdHomeScreenAnalyze.setOnClickListener {
+            val intent = Intent(activity, DiagnoseDetailActivity::class.java)
+            startActivity(intent)
+        }
+        val lastDiagnosis = viewModel.getFromSharedPreferences()
+        lastDiagnosis?.let {
+            updateResultUi(it)
         }
     }
 
@@ -113,10 +127,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private suspend fun saveImageAndFetchData(diagnosis: String, image: Bitmap) {
-        // Simpan gambar ke penyimpanan lokal
-        val imageUri = saveImageToLocalStorage(image)
-
-        // Dapatkan data dari API berdasarkan diagnosis
+        val imageUri = saveImageToLocalStorage(requireContext(), image)
+        val formatter = SimpleDateFormat("dd-MMMM-yyyy", Locale("id", "ID"))
+        val date = Date()
+        val dateNow = formatter.format(date)
         viewModel.getDiseaseById("D-001")
         viewModel.dataDisease.collect{ result ->
             when (result) {
@@ -128,15 +142,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         imageUri = imageUri.toString(),
                         diagnosis = diseaseData.data?.diseaseExplanation ?: "",
                         recommendation = diseaseData.data?.diseaseRecommendation ?: "",
-                        date = System.currentTimeMillis()
+                        date = dateNow
                     )
                     // Simpan ke database lokal
                     viewModel.saveDiagnose(historyDiagnose)
                     Log.d("HomeFragment", "History Diagnose: $historyDiagnose")
                     binding.progressResult.visibility = View.GONE
+                    restartFragment()
+                    updateResultUi(historyDiagnose)
                 }
                 is Result.Error -> {
-                    // Handle error
                 }
 
                 Result.Loading -> {
@@ -145,16 +160,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
     }
-
-    private fun saveImageToLocalStorage(image: Bitmap): Uri {
-        val context = requireContext()
-        val filename = "${System.currentTimeMillis()}.jpg"
-        val fos: FileOutputStream
-        val imageFile = File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), filename)
-        fos = FileOutputStream(imageFile)
-        image.compress(Bitmap.CompressFormat.JPEG, 100, fos)
-        fos.flush()
-        fos.close()
-        return Uri.fromFile(imageFile)
+    private fun restartFragment() {
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.detach(this).commitNow()
+        fragmentTransaction.attach(this).commitNow()
     }
+    private fun updateResultUi(historyDiagnose: HistoryDiagnose) {
+        binding.imgResultDiagnosis.setImageURI(Uri.parse(historyDiagnose.imageUri))
+        binding.titleResultDiagnosis.text = historyDiagnose.name
+        binding.dateResultDiagnosis.text = historyDiagnose.date
+    }
+
 }

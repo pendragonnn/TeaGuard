@@ -24,6 +24,7 @@ import java.util.Locale
 private const val FILENAME_FORMAT = "yyyyMMdd_HHmmss"
 private val timeStamp: String = SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(Date())
 
+
 fun getImageUri(context: Context): Uri {
     var uri: Uri? = null
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -104,4 +105,19 @@ fun rotateImage(source: Bitmap, angle: Float): Bitmap? {
     return Bitmap.createBitmap(
         source, 0, 0, source.width, source.height, matrix, true
     )
+}
+
+fun saveImageToLocalStorage(context: Context, image: Bitmap): Uri {
+    val filename = "$timeStamp.jpg"
+    val filesDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+    val imageFile = File(filesDir, filename)
+
+    val fos = FileOutputStream(imageFile)
+    image.compress(Bitmap.CompressFormat.JPEG, 100, fos)
+    fos.flush()
+    fos.close()
+
+    val reducedFile = imageFile.reduceFileImage()
+
+    return Uri.fromFile(reducedFile)
 }

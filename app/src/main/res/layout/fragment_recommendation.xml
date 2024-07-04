@@ -11,6 +11,6 @@
         style="@style/FragmentRecommendationDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit eos illo cupiditate, placeat odit dicta similique expedita enim in suscipit, tenetur hic aliquam ad fugiat quaerat,illum deserunt dolor dignissimos tenetur hic aliquam ad fugiat quaerat, illum deserunt dolor dignissimos." />
+        android:text="Pangkas dan buang daun yang terinfeksi, pastikan tanaman mendapatkan sirkulasi udara yang baik, dan gunakan fungisida berbasis tembaga jika diperlukan." />
 
 </FrameLayout>
