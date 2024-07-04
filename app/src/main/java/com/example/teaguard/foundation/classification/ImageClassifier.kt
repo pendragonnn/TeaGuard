@@ -24,27 +24,22 @@ class ImageClassifier(private val context: Context) {
     fun classifyImage(image: Bitmap): String {
         val model = Model.newInstance(context)
 
-        // Convert Bitmap to TensorImage
         val tensorImage = TensorImage(DataType.FLOAT32)
         tensorImage.load(image)
         val processedImage = imageProcessor.process(tensorImage)
 
-        // Create TensorBuffer for model input
         val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, imageSize, imageSize, 3), DataType.FLOAT32)
         inputFeature0.loadBuffer(processedImage.buffer)
 
-        // Run inference
         val outputs = model.process(inputFeature0)
         val outputFeature0 = outputs.outputFeature0AsTensorBuffer
 
-        // Get classification results
         val confidences = outputFeature0.floatArray
         for (i in confidences.indices) {
             Log.d("ImageClassifier", "Class $i (${classes[i]}): ${confidences[i]}")
         }
         val maxPos = confidences.indices.maxByOrNull { confidences[it] } ?: -1
 
-        // Close the model to release resources
         model.close()
 
         return if (maxPos >= 0) classes[maxPos] else "Unknown"

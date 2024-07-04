@@ -52,7 +52,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val viewModel: HomeViewModel by viewModels {
         ViewModelFactory.getInstance(requireActivity().application)
     }
-
+    val diseaseToId = mapOf(
+        "Algal Leaf" to "D-001",
+        "Anthracnose" to "D-002",
+        "Bird Eye Spot" to "D-003",
+        "Brown Blight" to "D-004",
+        "Gray Light" to "D-005",
+        "Red Leaf Spot" to "D-006",
+        "White Spot" to "D-007"
+    )
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -131,31 +139,34 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val formatter = SimpleDateFormat("dd-MMMM-yyyy", Locale("id", "ID"))
         val date = Date()
         val dateNow = formatter.format(date)
-        viewModel.getDiseaseById("D-001")
-        viewModel.dataDisease.collect{ result ->
-            when (result) {
-                is Result.Success -> {
-                    val diseaseData = result.data
-                    Log.d("HomeFragment", "Disease Data: $diseaseData")
-                    val historyDiagnose = HistoryDiagnose(
-                        name = diagnosis,
-                        imageUri = imageUri.toString(),
-                        diagnosis = diseaseData.data?.diseaseExplanation ?: "",
-                        recommendation = diseaseData.data?.diseaseRecommendation ?: "",
-                        date = dateNow
-                    )
-                    // Simpan ke database lokal
-                    viewModel.saveDiagnose(historyDiagnose)
-                    Log.d("HomeFragment", "History Diagnose: $historyDiagnose")
-                    binding.progressResult.visibility = View.GONE
-                    restartFragment()
-                    updateResultUi(historyDiagnose)
-                }
-                is Result.Error -> {
-                }
-
-                Result.Loading -> {
-                    binding.progressResult.visibility = View.VISIBLE
+        val diseaseId = diseaseToId[diagnosis]
+        diseaseId?.let { id ->
+            viewModel.getDiseaseById(id)
+            viewModel.dataDisease.collect { result ->
+                when (result) {
+                    is Result.Success -> {
+                        val diseaseData = result.data
+                        Log.d("HomeFragment", "Disease Data: $diseaseData")
+                        val historyDiagnose = HistoryDiagnose(
+                            name = diagnosis,
+                            imageUri = imageUri.toString(),
+                            diagnosis = diseaseData.data?.diseaseExplanation ?: "",
+                            recommendation = diseaseData.data?.diseaseRecommendation ?: "",
+                            date = dateNow
+                        )
+                        // Simpan ke database lokal
+                        viewModel.saveDiagnose(historyDiagnose)
+                        Log.d("HomeFragment", "History Diagnose: $historyDiagnose")
+                        binding.progressResult.visibility = View.GONE
+                        restartFragment()
+                        updateResultUi(historyDiagnose)
+                    }
+                    is Result.Error -> {
+                        // Handle error
+                    }
+                    Result.Loading -> {
+                        binding.progressResult.visibility = View.VISIBLE
+                    }
                 }
             }
         }
