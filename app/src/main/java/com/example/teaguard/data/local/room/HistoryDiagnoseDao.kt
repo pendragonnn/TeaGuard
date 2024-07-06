@@ -1,5 +1,6 @@
 package com.example.teaguard.data.local.room
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -22,4 +23,7 @@ interface HistoryDiagnoseDao {
 
     @Query("SELECT * FROM historydiagnose ORDER BY id DESC")
     fun getAllHistory(): Flow<List<HistoryDiagnose>>
+
+    @Query("SELECT * FROM historydiagnose ORDER BY id DESC LIMIT 1")
+     fun getLastHistory(): Flow<HistoryDiagnose>
 }

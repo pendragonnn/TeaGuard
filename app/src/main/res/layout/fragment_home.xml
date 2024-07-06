@@ -106,6 +106,7 @@
             android:text="Hasil Analisis" />
 
         <com.google.android.material.card.MaterialCardView
+            android:visibility="gone"
             android:id="@+id/cd_home_screen_analyze"
             app:cardCornerRadius="15dp"
             app:strokeWidth="1dp"

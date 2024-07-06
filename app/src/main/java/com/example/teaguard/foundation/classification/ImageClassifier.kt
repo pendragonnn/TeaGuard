@@ -1,7 +1,5 @@
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.media.ThumbnailUtils
 import android.util.Log
 import com.example.teaguard.ml.Model
 import org.tensorflow.lite.DataType
@@ -9,8 +7,7 @@ import org.tensorflow.lite.support.image.ImageProcessor
 import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.image.ops.ResizeOp
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
+
 
 class ImageClassifier(private val context: Context) {
 

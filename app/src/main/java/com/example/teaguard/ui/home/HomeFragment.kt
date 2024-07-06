@@ -50,7 +50,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding get() = _binding!!
     private var currentImageUri: Uri? = null
     private val viewModel: HomeViewModel by viewModels {
-        ViewModelFactory.getInstance(requireActivity().application)
+        ViewModelFactory.getInstance(requireContext())
     }
     val diseaseToId = mapOf(
         "Algal Leaf" to "D-001",
@@ -93,9 +93,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val intent = Intent(activity, DiagnoseDetailActivity::class.java)
             startActivity(intent)
         }
-        val lastDiagnosis = viewModel.getFromSharedPreferences()
-        lastDiagnosis?.let {
-            updateResultUi(it)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.dataLastResult.collect { lastDiagnosis ->
+                lastDiagnosis?.let {
+                    updateResultUi(it)
+                }
+            }
         }
     }
 
@@ -154,7 +157,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                             recommendation = diseaseData.data?.diseaseRecommendation ?: "",
                             date = dateNow
                         )
-                        // Simpan ke database lokal
+
                         viewModel.saveDiagnose(historyDiagnose)
                         Log.d("HomeFragment", "History Diagnose: $historyDiagnose")
                         binding.progressResult.visibility = View.GONE
@@ -162,7 +165,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         updateResultUi(historyDiagnose)
                     }
                     is Result.Error -> {
-                        // Handle error
+
                     }
                     Result.Loading -> {
                         binding.progressResult.visibility = View.VISIBLE
@@ -180,7 +183,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun updateResultUi(historyDiagnose: HistoryDiagnose) {
         binding.imgResultDiagnosis.setImageURI(Uri.parse(historyDiagnose.imageUri))
         binding.titleResultDiagnosis.text = historyDiagnose.name
-        binding.dateResultDiagnosis.text = historyDiagnose.date
+        val date = historyDiagnose.date.replace("-", " ")
+        binding.dateResultDiagnosis.text = date
+        binding.cdHomeScreenAnalyze.visibility = View.VISIBLE
     }
-
 }

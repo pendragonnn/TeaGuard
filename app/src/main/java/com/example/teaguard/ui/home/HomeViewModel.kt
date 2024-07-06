@@ -17,13 +17,18 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel (
     private val historyDiagnoseRepository: HistoryDiagnoseRepository,
-    private val diseaseRepository: DiseaseRepository,
-    application: Application
+    private val diseaseRepository: DiseaseRepository
 ) : ViewModel() {
 
     private val _dataDisease = MutableSharedFlow<Result<DiseaseByIdResponse>>()
     val dataDisease : Flow<Result<DiseaseByIdResponse>> = _dataDisease.asSharedFlow()
-    private val sharedPreferences = application.getSharedPreferences("DiagnosePrefs", Context.MODE_PRIVATE)
+
+    private val _dataLastResult = MutableSharedFlow<HistoryDiagnose>()
+    val dataLastResult : Flow<HistoryDiagnose> = _dataLastResult.asSharedFlow()
+
+    init {
+        getLastHistory()
+    }
     fun getDiseaseById(id: String) {
         viewModelScope.launch {
             diseaseRepository.getDiseaseById(id).collect{
@@ -34,38 +39,13 @@ class HomeViewModel (
     suspend fun saveDiagnose(historyDiagnose: HistoryDiagnose) {
         viewModelScope.launch {
             historyDiagnoseRepository.insert(historyDiagnose)
-            saveToSharedPreferences(historyDiagnose)
         }
     }
-
-    private fun saveToSharedPreferences(historyDiagnose: HistoryDiagnose) {
-        val editor = sharedPreferences.edit()
-        editor.putString("diagnosis_name", historyDiagnose.name)
-        editor.putString("diagnosis_imageUri", historyDiagnose.imageUri)
-        editor.putString("diagnosis_diagnosis", historyDiagnose.diagnosis)
-        editor.putString("diagnosis_recommendation", historyDiagnose.recommendation)
-        editor.putString("diagnosis_date", historyDiagnose.date)
-        editor.apply()
-    }
-
-    fun getFromSharedPreferences(): HistoryDiagnose? {
-        val name = sharedPreferences.getString("diagnosis_name", null) ?: return null
-        val imageUri = sharedPreferences.getString("diagnosis_imageUri", null) ?: return null
-        val diagnosis = sharedPreferences.getString("diagnosis_diagnosis", null) ?: return null
-        val recommendation = sharedPreferences.getString("diagnosis_recommendation", null) ?: return null
-        val date = sharedPreferences.getString("diagnosis_date", null) ?: return null
-
-        return HistoryDiagnose(
-            name = name,
-            imageUri = imageUri,
-            diagnosis = diagnosis,
-            recommendation = recommendation,
-            date = date
-        )
-    }
-    fun clearSharedPreferences() {
-        val editor = sharedPreferences.edit()
-        editor.clear()
-        editor.apply()
+    private fun getLastHistory() {
+        viewModelScope.launch {
+            historyDiagnoseRepository.getLastHistory().collect{
+                _dataLastResult.emit(it)
+            }
+        }
     }
 }

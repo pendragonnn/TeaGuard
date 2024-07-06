@@ -1,66 +1,62 @@
 package com.example.teaguard.ui.detection
 
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.teaguard.R
 import com.example.teaguard.databinding.FragmentDetectionBinding
-import com.example.teaguard.ui.diagnose.DiagnoseDetailActivity
+import com.example.teaguard.foundation.adapter.HistoryDiagnoseAdapter
+import com.example.teaguard.ui.ViewModelFactory
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DetectionFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-class DetectionFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class DetectionFragment : Fragment(R.layout.fragment_detection) {
+
     private var _binding: FragmentDetectionBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private val viewModel: DetectionViewModel by viewModels {
+        ViewModelFactory.getInstance(requireContext())
     }
+
+    private val detectionAdapter = HistoryDiagnoseAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentDetectionBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setupRecyclerView()
+        observeDetectionList()
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DetectionFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DetectionFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun setupRecyclerView() {
+        binding.rvResultDetection.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvResultDetection.adapter = detectionAdapter
+    }
+
+    private fun observeDetectionList() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.detectionList.collectLatest { historyDiagnoses ->
+                Log.d("DetectionFragment", "Observing detection list. Count: ${historyDiagnoses.size}")
+                detectionAdapter.submitList(historyDiagnoses)
             }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

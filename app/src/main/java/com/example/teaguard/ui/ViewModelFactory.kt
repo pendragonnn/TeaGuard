@@ -7,19 +7,22 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.teaguard.data.repository.DiseaseRepository
 import com.example.teaguard.data.repository.HistoryDiagnoseRepository
 import com.example.teaguard.di.Injection
+import com.example.teaguard.ui.detection.DetectionViewModel
 import com.example.teaguard.ui.home.HomeViewModel
 
 class ViewModelFactory private constructor(
     private val historyDiagnoseRepository: HistoryDiagnoseRepository,
-    private val diseaseRepository: DiseaseRepository,
-    private val application: Application
+    private val diseaseRepository: DiseaseRepository
 ) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
-                HomeViewModel(historyDiagnoseRepository, diseaseRepository, application) as T
+                HomeViewModel(historyDiagnoseRepository, diseaseRepository) as T
+            }
+            modelClass.isAssignableFrom(DetectionViewModel::class.java) -> {
+                DetectionViewModel(historyDiagnoseRepository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
@@ -29,12 +32,11 @@ class ViewModelFactory private constructor(
         @Volatile
         private var INSTANCE: ViewModelFactory? = null
 
-        fun getInstance(application: Application): ViewModelFactory {
+        fun getInstance(context: Context): ViewModelFactory {
             return INSTANCE ?: synchronized(this) {
-                val context = application.applicationContext
                 val historyDiagnoseRepository = Injection.provideDiagnoseRepository(context)
                 val diseaseRepository = Injection.provideDiseaseRepository(context)
-                ViewModelFactory(historyDiagnoseRepository, diseaseRepository, application).also {
+                ViewModelFactory(historyDiagnoseRepository, diseaseRepository).also {
                     INSTANCE = it
                 }
             }
