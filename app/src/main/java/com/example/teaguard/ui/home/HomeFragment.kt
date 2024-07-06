@@ -26,6 +26,7 @@ import com.example.teaguard.data.local.entity.HistoryDiagnose
 import com.example.teaguard.databinding.FragmentHomeBinding
 import com.example.teaguard.foundation.utils.saveImageToLocalStorage
 import com.example.teaguard.ml.Model1
+import com.example.teaguard.ui.MainActivity
 import com.example.teaguard.ui.ViewModelFactory
 import com.example.teaguard.ui.diagnose.DiagnoseDetailActivity
 import kotlinx.coroutines.flow.collectLatest
@@ -49,6 +50,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val imageSize = 256
     private val binding get() = _binding!!
     private var currentImageUri: Uri? = null
+    private var lastDiagnosis: HistoryDiagnose? = null
     private val viewModel: HomeViewModel by viewModels {
         ViewModelFactory.getInstance(requireContext())
     }
@@ -89,13 +91,20 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val cameraIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(cameraIntent, 1)
         }
+
         binding.cdHomeScreenAnalyze.setOnClickListener {
-            val intent = Intent(activity, DiagnoseDetailActivity::class.java)
-            startActivity(intent)
+            lastDiagnosis?.let { diagnosis ->
+                val intent = Intent(activity, DiagnoseDetailActivity::class.java)
+                intent.putExtra("HISTORY_DIAGNOSE", diagnosis)
+                intent.putExtra("RETURN_FRAGMENT", "home")
+                startActivity(intent)
+            }
         }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.dataLastResult.collect { lastDiagnosis ->
                 lastDiagnosis?.let {
+                    this@HomeFragment.lastDiagnosis = it
                     updateResultUi(it)
                 }
             }
@@ -159,6 +168,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         )
 
                         viewModel.saveDiagnose(historyDiagnose)
+                        lastDiagnosis = historyDiagnose
                         Log.d("HomeFragment", "History Diagnose: $historyDiagnose")
                         binding.progressResult.visibility = View.GONE
                         restartFragment()
@@ -174,12 +184,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
     }
+
     private fun restartFragment() {
         val fragmentManager = parentFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.detach(this).commitNow()
         fragmentTransaction.attach(this).commitNow()
     }
+
     private fun updateResultUi(historyDiagnose: HistoryDiagnose) {
         binding.imgResultDiagnosis.setImageURI(Uri.parse(historyDiagnose.imageUri))
         binding.titleResultDiagnosis.text = historyDiagnose.name

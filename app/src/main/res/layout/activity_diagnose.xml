@@ -35,7 +35,7 @@
             <ImageView
                 android:id="@+id/iv_img_tea"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/dgs_wereng_img"/>
         </com.google.android.material.card.MaterialCardView>
