@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.teaguard.data.local.entity.HistoryDiagnose
 import com.example.teaguard.databinding.ItemResultBinding
 
@@ -42,9 +41,7 @@ class HistoryDiagnoseAdapter : ListAdapter<HistoryDiagnose, HistoryDiagnoseAdapt
     inner class ViewHolder(private val binding: ItemResultBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(historyDiagnose: HistoryDiagnose) {
             binding.apply {
-                Glide.with(itemView)
-                    .load(Uri.parse(historyDiagnose.imageUri))
-                    .into(imgResultDiagnosis)
+                binding.imgResultDiagnosis.setImageURI(Uri.parse(historyDiagnose.imageUri))
                 titleResultDiagnosis.text = historyDiagnose.name
                 val date = historyDiagnose.date.replace("-", " ")
                 dateResultDiagnosis.text = date

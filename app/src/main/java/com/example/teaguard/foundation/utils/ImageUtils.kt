@@ -20,10 +20,11 @@ import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import java.util.UUID
 
-private const val FILENAME_FORMAT = "yyyyMMdd_HHmmss"
+private const val FILENAME_FORMAT = "yyyyMMdd_HHmmssSSS"
 private val timeStamp: String = SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(Date())
-
+private val uniqueID: String = UUID.randomUUID().toString()
 
 fun getImageUri(context: Context): Uri {
     var uri: Uri? = null
@@ -108,7 +109,9 @@ fun rotateImage(source: Bitmap, angle: Float): Bitmap? {
 }
 
 fun saveImageToLocalStorage(context: Context, image: Bitmap): Uri {
-    val filename = "$timeStamp.jpg"
+    val timeStamp = SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(Date())
+    val uniqueID = UUID.randomUUID().toString()
+    val filename = "${timeStamp}_${uniqueID}.jpg"
     val filesDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
     val imageFile = File(filesDir, filename)
 

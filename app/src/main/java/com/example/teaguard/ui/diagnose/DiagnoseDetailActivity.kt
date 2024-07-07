@@ -3,6 +3,7 @@ package com.example.teaguard.ui.diagnose
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.window.OnBackInvokedDispatcher
 import androidx.activity.enableEdgeToEdge
@@ -40,10 +41,7 @@ class DiagnoseDetailActivity : AppCompatActivity() {
         returnFragment = intent.getStringExtra("RETURN_FRAGMENT")!!
 
         binding.tvTitle.text = historyDiagnose.name
-        Glide.with(this)
-            .load(Uri.parse(historyDiagnose.imageUri))
-            .into(binding.ivImgTea)
-
+        binding.ivImgTea.setImageURI(Uri.parse(historyDiagnose.imageUri))
         binding.viewPager.adapter = VPAdapter(this, historyDiagnose)
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->

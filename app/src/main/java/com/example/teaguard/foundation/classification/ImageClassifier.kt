@@ -18,7 +18,7 @@ class ImageClassifier(private val context: Context) {
         .add(ResizeOp(imageSize, imageSize, ResizeOp.ResizeMethod.BILINEAR))
         .build()
 
-    fun classifyImage(image: Bitmap): String {
+    fun classifyImage(image: Bitmap): String? {
         val model = Model.newInstance(context)
 
         val tensorImage = TensorImage(DataType.FLOAT32)
@@ -35,10 +35,18 @@ class ImageClassifier(private val context: Context) {
         for (i in confidences.indices) {
             Log.d("ImageClassifier", "Class $i (${classes[i]}): ${confidences[i]}")
         }
+
+        val maxConfidence = confidences.maxOrNull() ?: 0f
         val maxPos = confidences.indices.maxByOrNull { confidences[it] } ?: -1
 
         model.close()
 
-        return if (maxPos >= 0) classes[maxPos] else "Unknown"
+        return if (maxPos >= 0 && maxConfidence > THRESHOLD_CONFIDENCE) classes[maxPos] else null
+    }
+
+    companion object {
+        private const val THRESHOLD_CONFIDENCE = 0.5f // Atur sesuai dengan kebutuhan
     }
 }
+
+

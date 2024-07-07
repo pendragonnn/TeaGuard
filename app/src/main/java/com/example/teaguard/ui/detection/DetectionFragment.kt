@@ -63,7 +63,7 @@ class DetectionFragment : Fragment(R.layout.fragment_detection) {
     }
     private fun observeDetectionList() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.detectionList.collectLatest { historyDiagnoses ->
+            viewModel.detectionList.collect { historyDiagnoses ->
                 Log.d("DetectionFragment", "Observing detection list. Count: ${historyDiagnoses.size}")
                 detectionAdapter.submitList(historyDiagnoses)
             }
