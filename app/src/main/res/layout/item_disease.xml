@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cd_home_screen_analyze"
+    app:cardCornerRadius="15dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="#4BA26A"
+    android:layout_marginBottom="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/rl_home_screen_card_analyze"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/grayBackground"
+        android:paddingHorizontal="25dp"
+        android:paddingVertical="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_result_diagnosis"
+            android:layout_width="60dp"
+            android:layout_height="70dp">
+            <ImageView
+                android:id="@+id/img_result_diagnosis"
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/hs_wereng_img"/>
+        </com.google.android.material.card.MaterialCardView>
+
+        <RelativeLayout
+            android:id="@+id/analyze_1"
+            android:layout_toEndOf="@id/card_result_diagnosis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp">
+            <TextView
+                style="@style/FragmentHomeCardDiseaseTitle"
+                android:id="@+id/title_disease"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Algal Leaf" />
+            <TextView
+                android:id="@id/desc_disease"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@id/title_disease"
+                android:text="disease"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

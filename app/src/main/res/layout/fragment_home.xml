@@ -19,6 +19,7 @@
             style="@style/FragmentHomeTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
             android:text="Sembuhkan tanaman anda" />
 
         <com.google.android.material.card.MaterialCardView
@@ -27,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="28dp"
             app:cardCornerRadius="15dp"
-            app:cardElevation="2dp">
+            app:cardElevation="4dp">
 
             <LinearLayout
                 android:id="@+id/ll_home_screen_card"
@@ -55,6 +56,7 @@
                         style="@style/FragmentHomeCardTutorial"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="Analisis Gambar" />
                 </LinearLayout>
 
@@ -80,30 +82,66 @@
                         style="@style/FragmentHomeCardTutorial"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="Analisis Hasil" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <Button
+            style="@style/ButtonGeneral"
+            android:fontFamily="@font/poppins_medium"
             android:id="@+id/btn_hs_camera"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
+            android:textSize="16sp"
             android:text="Gunakan Kamera" />
 
         <Button
+            style="@style/ButtonGeneral"
+            android:fontFamily="@font/poppins_medium"
             android:id="@+id/btn_hs_gallery"
+            android:textSize="16sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ambil dari Galeri" />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Baca Tentang Penyakit Daun Teh dalam Aplikasi TeaGuard"
+            android:textSize="16sp" />
+
+        <FrameLayout
+            android:id="@+id/fl_home_screen_list_disease"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:src="@drawable/list_disease" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Klik Untuk Membaca"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </FrameLayout>
+        <TextView
             android:id="@+id/tv_headline2_home_screen"
             style="@style/FragmentHomeAnalyzeTitle"
+            android:fontFamily="@font/poppins_medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hasil Analisis" />
+            android:text="Hasil Analisis Terakhir" />
 
         <com.google.android.material.card.MaterialCardView
             android:visibility="gone"

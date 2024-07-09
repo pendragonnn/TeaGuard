@@ -51,7 +51,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         "Brown Blight" to "D-004",
         "Gray Light" to "D-005",
         "Red Leaf Spot" to "D-006",
-        "White Spot" to "D-007"
+        "White Spot" to "D-007",
+        "Healthy" to "D-008"
     )
 
     private lateinit var cameraLauncher: ActivityResultLauncher<Intent>
@@ -161,7 +162,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         Log.d("HomeFragment", "Diagnosis: $diagnosis")
         if (diagnosis != null) {
             saveImageAndFetchData(diagnosis, image)
-        } else {
+        }
+        else {
             showSnackbarError("Gambar tidak sesuai, silahkan foto ulang")
         }
     }
@@ -220,6 +222,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val intent = Intent(activity, DiagnoseDetailActivity::class.java)
         intent.putExtra("HISTORY_DIAGNOSE", historyDiagnose)
         intent.putExtra("RETURN_FRAGMENT", "home")
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
     }
 

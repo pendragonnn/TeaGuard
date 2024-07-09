@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.teaguard.data.local.entity.HistoryDiagnose
+import com.example.teaguard.ui.aboutUs.AboutUsFragment
 import com.example.teaguard.ui.diagnose.DiagnoseFragment
 import com.example.teaguard.ui.diagnose.RecommendationFragment
 

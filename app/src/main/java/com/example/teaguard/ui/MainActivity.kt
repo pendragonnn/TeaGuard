@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.teaguard.R
 import com.example.teaguard.databinding.ActivityMainBinding
+import com.example.teaguard.ui.aboutUs.AboutUsFragment
 import com.example.teaguard.ui.detection.DetectionFragment
 import com.example.teaguard.ui.home.HomeFragment
 import com.example.teaguard.ui.home.HomeViewModel
@@ -49,6 +50,10 @@ class MainActivity : AppCompatActivity() {
                     replaceFragment(DetectionFragment())
                     true
                 }
+                R.id.about_us -> {
+                    replaceFragment(AboutUsFragment())
+                    true
+                }
                 else -> false
             }
         }
@@ -60,5 +65,9 @@ class MainActivity : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }

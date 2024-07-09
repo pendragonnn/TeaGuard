@@ -58,4 +58,12 @@ class DiagnoseDetailActivity : AppCompatActivity() {
             finish()
         }
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 }
