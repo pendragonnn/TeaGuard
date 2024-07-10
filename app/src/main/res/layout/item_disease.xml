@@ -22,7 +22,7 @@
             android:layout_width="60dp"
             android:layout_height="70dp">
             <ImageView
-                android:id="@+id/img_result_diagnosis"
+                android:id="@+id/img_disease"
                 android:layout_width="60dp"
                 android:layout_height="70dp"
                 android:scaleType="fitXY"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:text="Algal Leaf" />
             <TextView
-                android:id="@id/desc_disease"
+                android:id="@+id/desc_disease"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_below="@id/title_disease"

@@ -206,7 +206,7 @@
                         android:id="@+id/card_pic3"
                         android:layout_width="75dp"
                         android:layout_height="75dp"
-                        android:src="@drawable/pic_wisnu"/>
+                        android:src="@drawable/pic_rizky"/>
                     <RelativeLayout
                         android:layout_toEndOf="@id/card_pic3"
                         android:layout_width="match_parent"
@@ -359,7 +359,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/title_name5"
                             android:layout_centerHorizontal="true"
-                            android:text="2110511043"/>
+                            android:text="2210511163"/>
                         <TextView
                             android:id="@+id/jurusan5"
                             android:layout_below="@id/nim5"
@@ -421,7 +421,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/title_name6"
                             android:layout_centerHorizontal="true"
-                            android:text="2110511043"/>
+                            android:text="2210511115"/>
                         <TextView
                             android:id="@+id/jurusan6"
                             android:layout_below="@id/nim6"

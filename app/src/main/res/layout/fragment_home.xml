@@ -6,207 +6,211 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <LinearLayout
-        android:id="@+id/ll_main_hs"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingHorizontal="@dimen/padding_horizontal"
-        android:paddingTop="@dimen/padding_vertical_top">
-
-        <TextView
-            android:id="@+id/tv_headline_home_screen"
-            style="@style/FragmentHomeTitle"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/ll_main_hs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Sembuhkan tanaman anda" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/padding_horizontal"
+            android:paddingTop="@dimen/padding_vertical_top">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cd_home_screen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="4dp">
-
-            <LinearLayout
-                android:id="@+id/ll_home_screen_card"
+            <TextView
+                android:id="@+id/tv_headline_home_screen"
+                style="@style/FragmentHomeTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/grayBackground"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingHorizontal="30dp"
-                android:paddingVertical="50dp">
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Sembuhkan tanaman anda" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginBottom="10dp"
-                        android:src="@drawable/hs_camera_img" />
-
-                    <TextView
-                        style="@style/FragmentHomeCardTutorial"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="Analisis Gambar" />
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:src="@drawable/hs_arrow_img" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginBottom="10dp"
-                        android:src="@drawable/hs_result_img" />
-
-                    <TextView
-                        style="@style/FragmentHomeCardTutorial"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="Analisis Hasil" />
-                </LinearLayout>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <Button
-            style="@style/ButtonGeneral"
-            android:fontFamily="@font/poppins_medium"
-            android:id="@+id/btn_hs_camera"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:textSize="16sp"
-            android:text="Gunakan Kamera" />
-
-        <Button
-            style="@style/ButtonGeneral"
-            android:fontFamily="@font/poppins_medium"
-            android:id="@+id/btn_hs_gallery"
-            android:textSize="16sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ambil dari Galeri" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Baca Tentang Penyakit Daun Teh dalam Aplikasi TeaGuard"
-            android:textSize="16sp" />
-
-        <FrameLayout
-            android:id="@+id/fl_home_screen_list_disease"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cd_home_screen"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:scaleType="fitXY"
-                android:src="@drawable/list_disease" />
+                android:layout_marginBottom="28dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_home_screen_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/grayBackground"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="30dp"
+                    android:paddingVertical="50dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="10dp"
+                            android:src="@drawable/hs_camera_img" />
+
+                        <TextView
+                            style="@style/FragmentHomeCardTutorial"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="Analisis Gambar" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:src="@drawable/hs_arrow_img" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="10dp"
+                            android:src="@drawable/hs_result_img" />
+
+                        <TextView
+                            style="@style/FragmentHomeCardTutorial"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="Analisis Hasil" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <Button
+                style="@style/ButtonGeneral"
+                android:fontFamily="@font/poppins_medium"
+                android:id="@+id/btn_hs_camera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textSize="16sp"
+                android:text="Gunakan Kamera" />
+
+            <Button
+                style="@style/ButtonGeneral"
+                android:fontFamily="@font/poppins_medium"
+                android:id="@+id/btn_hs_gallery"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ambil dari Galeri" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Klik Untuk Membaca"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/white"
+                android:text="Baca Tentang Penyakit Daun Teh dalam Aplikasi TeaGuard"
                 android:textSize="16sp" />
-        </FrameLayout>
-        <TextView
-            android:id="@+id/tv_headline2_home_screen"
-            style="@style/FragmentHomeAnalyzeTitle"
-            android:fontFamily="@font/poppins_medium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hasil Analisis Terakhir" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:visibility="gone"
-            android:id="@+id/cd_home_screen_analyze"
-            app:cardCornerRadius="15dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="#4BA26A"
-            android:layout_marginBottom="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <RelativeLayout
-                android:id="@+id/rl_home_screen_card_analyze"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:background="@color/grayBackground"
-                android:paddingHorizontal="25dp"
-                android:paddingVertical="20dp"
+            <FrameLayout
+                android:id="@+id/fl_home_screen_list_disease"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_result_diagnosis"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp">
-                    <ImageView
-                        android:id="@+id/img_result_diagnosis"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/hs_wereng_img"/>
-                </com.google.android.material.card.MaterialCardView>
-
-                <RelativeLayout
-                    android:id="@+id/analyze_1"
-                    android:layout_toEndOf="@id/card_result_diagnosis"
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp">
-                    <TextView
-                        style="@style/FragmentHomeCardDate"
-                        android:id="@+id/date_result_diagnosis"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="11 November 2023" />
-                    <TextView
-                        style="@style/FragmentHomeCardDiseaseTitle"
-                        android:id="@+id/title_result_diagnosis"
-                        android:layout_below="@id/date_result_diagnosis"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/list_disease" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Klik Untuk Membaca"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </FrameLayout>
+            <TextView
+                android:id="@+id/tv_headline2_home_screen"
+                style="@style/FragmentHomeAnalyzeTitle"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hasil Analisis Terakhir" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:visibility="gone"
+                android:id="@+id/cd_home_screen_analyze"
+                app:cardCornerRadius="15dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#4BA26A"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:id="@+id/rl_home_screen_card_analyze"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/grayBackground"
+                    android:paddingHorizontal="25dp"
+                    android:paddingVertical="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_result_diagnosis"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp">
+                        <ImageView
+                            android:id="@+id/img_result_diagnosis"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/hs_wereng_img"/>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <RelativeLayout
+                        android:id="@+id/analyze_1"
+                        android:layout_toEndOf="@id/card_result_diagnosis"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Algal Leaf" />
-                    <ImageView
-                        android:id="@+id/img_arrow2"
-                        android:layout_below="@id/date_result_diagnosis"
-                        android:layout_toEndOf="@id/date_result_diagnosis"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_margin="12dp"
-                        android:contentDescription="TODO"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/hs_arrow2_img"/>
-                </RelativeLayout>
+                        android:layout_marginStart="20dp">
+                        <TextView
+                            style="@style/FragmentHomeCardDate"
+                            android:id="@+id/date_result_diagnosis"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="11 November 2023" />
+                        <TextView
+                            style="@style/FragmentHomeCardDiseaseTitle"
+                            android:id="@+id/title_result_diagnosis"
+                            android:layout_below="@id/date_result_diagnosis"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Algal Leaf" />
+                        <ImageView
+                            android:id="@+id/img_arrow2"
+                            android:layout_below="@id/date_result_diagnosis"
+                            android:layout_toEndOf="@id/date_result_diagnosis"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_margin="12dp"
+                            android:contentDescription="TODO"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/hs_arrow2_img"/>
+                    </RelativeLayout>
 
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
 
     <ProgressBar
         android:visibility="invisible"

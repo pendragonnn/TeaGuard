@@ -26,6 +26,7 @@ import com.example.teaguard.databinding.FragmentHomeBinding
 import com.example.teaguard.foundation.utils.saveImageToLocalStorage
 import com.example.teaguard.ui.ViewModelFactory
 import com.example.teaguard.ui.diagnose.DiagnoseDetailActivity
+import com.example.teaguard.ui.listDisease.DiseaseActivity
 import com.google.android.material.snackbar.Snackbar
 import com.yalantis.ucrop.UCrop
 import kotlinx.coroutines.launch
@@ -39,7 +40,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private var _binding: FragmentHomeBinding? = null
     private val imageSize = 256
     private val binding get() = _binding!!
-    private var currentImageUri: Uri? = null
     private var lastDiagnosis: HistoryDiagnose? = null
     private val viewModel: HomeViewModel by viewModels {
         ViewModelFactory.getInstance(requireContext())
@@ -114,6 +114,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             lastDiagnosis?.let { diagnosis ->
                 navigateToDiagnoseDetail(diagnosis)
             }
+        }
+        binding.flHomeScreenListDisease.setOnClickListener {
+            val diseaseListIntent = Intent(activity, DiseaseActivity::class.java)
+            startActivity(diseaseListIntent)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
