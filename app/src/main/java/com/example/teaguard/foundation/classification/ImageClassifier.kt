@@ -45,7 +45,7 @@ class ImageClassifier(private val context: Context) {
     }
 
     companion object {
-        private const val THRESHOLD_CONFIDENCE = 0.5f // Atur sesuai dengan kebutuhan
+        private const val THRESHOLD_CONFIDENCE = 0.5f
     }
 }
 

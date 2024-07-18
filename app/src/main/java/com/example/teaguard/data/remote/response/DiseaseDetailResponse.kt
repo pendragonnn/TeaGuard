@@ -4,8 +4,14 @@ import com.google.gson.annotations.SerializedName
 
 data class DiseaseDetailResponse(
 
-	@field:SerializedName("DiseaseDetailResponse")
-	val diseaseDetailResponse: List<DiseaseDetailResponseItem?>? = null
+	@field:SerializedName("message")
+	val message: String? = null,
+
+	@field:SerializedName("status")
+	val status: Boolean? = null,
+
+	@field:SerializedName("data")
+	val data: List<DiseaseDetailResponseItem?>? = null
 )
 
 data class DiseaseDetailResponseItem(

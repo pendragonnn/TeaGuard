@@ -16,7 +16,6 @@ import com.example.teaguard.databinding.FragmentDetectionBinding
 import com.example.teaguard.foundation.adapter.HistoryDiagnoseAdapter
 import com.example.teaguard.ui.ViewModelFactory
 import com.example.teaguard.ui.diagnose.DiagnoseDetailActivity
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class DetectionFragment : Fragment(R.layout.fragment_detection) {

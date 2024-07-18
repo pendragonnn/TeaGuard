@@ -16,6 +16,7 @@ import com.example.teaguard.foundation.adapter.DiseaseDetailAdapter
 import com.example.teaguard.ui.ViewModelFactory
 import com.example.teaguard.foundation.utils.Result
 import com.example.teaguard.ui.MainActivity
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 class DiseaseActivity : AppCompatActivity() {
@@ -70,13 +71,19 @@ class DiseaseActivity : AppCompatActivity() {
             viewModel.listDisease.collect { result ->
                 when (result) {
                     is Result.Success -> {
-                        diseaseAdapter.submitList(result.data)
+                        binding.progressResult.visibility = android.view.View.GONE
+                        diseaseAdapter.submitList(result.data.data)
                     }
                     is Result.Error -> {
-                        // handle error
+                        binding.progressResult.visibility = android.view.View.GONE
+                        Snackbar.make(
+                            binding.root,
+                            "Error loading data: ${result.error}",
+                            Snackbar.LENGTH_LONG
+                        ).show()
                     }
                     is Result.Loading -> {
-                        // show loading
+                        binding.progressResult.visibility = android.view.View.VISIBLE
                     }
                 }
             }

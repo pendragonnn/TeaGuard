@@ -1,6 +1,5 @@
 package com.example.teaguard.ui
 
-import android.app.Application
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -39,7 +38,7 @@ class ViewModelFactory private constructor(
         fun getInstance(context: Context): ViewModelFactory {
             return INSTANCE ?: synchronized(this) {
                 val historyDiagnoseRepository = Injection.provideDiagnoseRepository(context)
-                val diseaseRepository = Injection.provideDiseaseRepository(context)
+                val diseaseRepository = Injection.provideDiseaseRepository()
                 ViewModelFactory(historyDiagnoseRepository, diseaseRepository).also {
                     INSTANCE = it
                 }

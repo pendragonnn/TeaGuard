@@ -1,6 +1,5 @@
 package com.example.teaguard.foundation.adapter
 
-import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.teaguard.BuildConfig
 import com.example.teaguard.data.remote.response.DiseaseDetailResponseItem
 import com.example.teaguard.databinding.ItemDiseaseBinding
 
@@ -16,7 +16,7 @@ class DiseaseDetailAdapter : ListAdapter<DiseaseDetailResponseItem, DiseaseDetai
     inner class ViewHolder(private val binding: ItemDiseaseBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(data: DiseaseDetailResponseItem) {
             binding.apply {
-                val baseUrl = "http://100.87.136.13:5000"
+                val baseUrl = (BuildConfig.BASE_URL).removeSuffix("/")
                 val imageUrl = baseUrl + data.diseaseImgPreview
                 Log.d("DiseaseDetailAdapter", "bind: $imageUrl")
                 Glide.with(itemView.context)

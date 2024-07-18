@@ -1,11 +1,8 @@
 package com.example.teaguard.ui.home
 
-import android.app.Application
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.teaguard.data.local.entity.HistoryDiagnose
-import com.example.teaguard.data.remote.response.DataDisease
 import com.example.teaguard.data.remote.response.DiseaseByIdResponse
 import com.example.teaguard.data.repository.DiseaseRepository
 import com.example.teaguard.data.repository.HistoryDiagnoseRepository

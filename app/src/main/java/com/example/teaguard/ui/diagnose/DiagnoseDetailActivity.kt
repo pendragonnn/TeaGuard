@@ -3,19 +3,15 @@ package com.example.teaguard.ui.diagnose
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.window.OnBackInvokedDispatcher
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.bumptech.glide.Glide
 import com.example.teaguard.R
 import com.example.teaguard.data.local.entity.HistoryDiagnose
 import com.example.teaguard.databinding.ActivityDiagnoseBinding
 import com.example.teaguard.foundation.adapter.VPAdapter
-import com.example.teaguard.ui.MainActivity
 import com.example.teaguard.ui.listDisease.DiseaseDetailActivity
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -60,10 +56,7 @@ class DiagnoseDetailActivity : AppCompatActivity() {
         }.attach()
 
         binding.dgsBack.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("RETURN_FRAGMENT", returnFragment)
-            startActivity(intent)
-            finish()
+            onBackPressed()
         }
     }
     override fun onBackPressed() {

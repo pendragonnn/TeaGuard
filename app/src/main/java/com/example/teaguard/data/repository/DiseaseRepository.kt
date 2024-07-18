@@ -22,7 +22,7 @@ class DiseaseRepository private constructor(
         emit(Result.Error(e.message.toString()))
     }
 
-    suspend fun getAllDiseaseDetail(): Flow<Result<List<DiseaseDetailResponseItem>>> = flow {
+    suspend fun getAllDiseaseDetail(): Flow<Result<DiseaseDetailResponse>> = flow {
         emit(Result.Loading)
         val response = apiService.getAllDiseaseDetail()
         emit(Result.Success(response))

@@ -297,7 +297,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/title_name4"
                             android:layout_centerHorizontal="true"
-                            android:text="2110511043"/>
+                            android:text="2110511064"/>
                         <TextView
                             android:id="@+id/jurusan4"
                             android:layout_below="@id/nim4"

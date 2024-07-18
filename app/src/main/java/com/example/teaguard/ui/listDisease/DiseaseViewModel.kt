@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.teaguard.data.remote.response.DiseaseDetailByIdResponse
 import com.example.teaguard.data.remote.response.DiseaseDetailResponse
-import com.example.teaguard.data.remote.response.DiseaseDetailResponseItem
 import com.example.teaguard.data.repository.DiseaseRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -13,8 +12,8 @@ import com.example.teaguard.foundation.utils.Result
 
 class DiseaseViewModel(private val diseaseRepository: DiseaseRepository) : ViewModel() {
 
-    private val _listDisease = MutableSharedFlow<Result<List<DiseaseDetailResponseItem>>>()
-    val listDisease : Flow<Result<List<DiseaseDetailResponseItem>>> = _listDisease
+    private val _listDisease = MutableSharedFlow<Result<DiseaseDetailResponse>>()
+    val listDisease : Flow<Result<DiseaseDetailResponse>> = _listDisease
 
     private val _listDiseaseById = MutableSharedFlow<Result<DiseaseDetailByIdResponse>>()
     val listDiseaseById : Flow<Result<DiseaseDetailByIdResponse>> = _listDiseaseById

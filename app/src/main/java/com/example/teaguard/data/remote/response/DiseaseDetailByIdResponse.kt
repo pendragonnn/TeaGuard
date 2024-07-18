@@ -2,7 +2,19 @@ package com.example.teaguard.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
+
 data class DiseaseDetailByIdResponse(
+
+	@field:SerializedName("message")
+	val message: String? = null,
+
+	@field:SerializedName("status")
+	val status: Boolean? = null,
+
+	@field:SerializedName("data")
+	val data: DiseaseDetailByIdResponseItem? = null
+)
+data class DiseaseDetailByIdResponseItem(
 
 	@field:SerializedName("diseaseName")
 	val diseaseName: String? = null,

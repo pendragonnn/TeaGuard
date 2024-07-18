@@ -1,6 +1,5 @@
 package com.example.teaguard.ui.listDisease
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -10,13 +9,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.example.teaguard.BuildConfig
 import com.example.teaguard.R
 import com.example.teaguard.data.remote.response.DiseaseDetailByIdResponse
 import com.example.teaguard.databinding.ActivityDiseaseDetailBinding
 import com.example.teaguard.foundation.utils.Result
-import com.example.teaguard.ui.MainActivity
 import com.example.teaguard.ui.ViewModelFactory
-import kotlinx.coroutines.flow.collect
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 class DiseaseDetailActivity : AppCompatActivity() {
@@ -54,17 +53,17 @@ class DiseaseDetailActivity : AppCompatActivity() {
         observeViewModel()
     }
 
-    private fun setUpUi(data: DiseaseDetailByIdResponse) {
-        val baseUrl = "http://100.87.136.13:5000"
-        val imageUrl = baseUrl + data.diseaseImgDetail
+    private fun setUpUi(diseaseDetail: DiseaseDetailByIdResponse) {
+        val baseUrl = BuildConfig.BASE_URL.removeSuffix("/")
+        val imageUrl = baseUrl + diseaseDetail.data?.diseaseImgDetail
         Log.d("DiseaseDetailActivity", "bind: $imageUrl")
         Glide.with(this)
             .load(imageUrl)
             .into(binding.imageDisease)
-        binding.titleDisease.text = data.diseaseName
-        binding.descDisease.text = data.diseaseExplanation
-        binding.descPrevention.text = data.diseasePrevention
-        binding.descRecommended.text = data.diseaseRecommendation
+        binding.titleDisease.text = diseaseDetail.data?.diseaseName
+        binding.descDisease.text = diseaseDetail.data?.diseaseExplanation
+        binding.descPrevention.text = diseaseDetail.data?.diseasePrevention
+        binding.descRecommended.text = diseaseDetail.data?.diseaseRecommendation
     }
 
     private fun observeViewModel() {
@@ -73,12 +72,19 @@ class DiseaseDetailActivity : AppCompatActivity() {
             viewModel.listDiseaseById.collect { result ->
                 when (result) {
                     is Result.Success -> {
+                        binding.progressResult.visibility = android.view.View.GONE
                         setUpUi(result.data)
                     }
                     is Result.Error -> {
+                        binding.progressResult.visibility = android.view.View.GONE
+                        Snackbar.make(
+                            binding.root,
+                            "Error loading data: ${result.error}",
+                            Snackbar.LENGTH_LONG
+                        ).show()
                     }
                     is Result.Loading -> {
-
+                        binding.progressResult.visibility = android.view.View.VISIBLE
                     }
                 }
             }

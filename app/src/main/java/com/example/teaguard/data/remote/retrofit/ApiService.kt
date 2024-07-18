@@ -17,7 +17,7 @@ interface ApiService {
     suspend fun getDiseaseById(@Path("id") id: String) : DiseaseByIdResponse
 
     @GET("v1/disease_details")
-    suspend fun getAllDiseaseDetail() : List<DiseaseDetailResponseItem>
+    suspend fun getAllDiseaseDetail() : DiseaseDetailResponse
 
     @GET("v1/disease_details/{id}")
     suspend fun getDiseaseDetailById(@Path("id") id: String) : DiseaseDetailByIdResponse

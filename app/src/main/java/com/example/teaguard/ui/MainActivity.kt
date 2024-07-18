@@ -1,15 +1,9 @@
 package com.example.teaguard.ui
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
@@ -18,7 +12,6 @@ import com.example.teaguard.databinding.ActivityMainBinding
 import com.example.teaguard.ui.aboutUs.AboutUsFragment
 import com.example.teaguard.ui.detection.DetectionFragment
 import com.example.teaguard.ui.home.HomeFragment
-import com.example.teaguard.ui.home.HomeViewModel
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +20,6 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen()
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 

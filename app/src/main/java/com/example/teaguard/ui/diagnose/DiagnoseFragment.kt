@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-
-import com.example.teaguard.R
 import com.example.teaguard.databinding.FragmentDiagnoseBinding
 
 class DiagnoseFragment : Fragment() {

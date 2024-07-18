@@ -97,6 +97,7 @@
                 android:id="@+id/btn_hs_camera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_marginBottom="5dp"
                 android:textSize="16sp"
                 android:text="Gunakan Kamera" />
@@ -106,6 +107,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:id="@+id/btn_hs_gallery"
                 android:textSize="16sp"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ambil dari Galeri" />
