@@ -8,4 +8,8 @@
         android:id="@+id/detection"
         android:icon="@drawable/hs_trace_black_img"
         android:title="Deteksi" />
+    <item
+        android:id="@+id/about_us"
+        android:icon="@drawable/hs_about_us"
+        android:title="Tentang Kami" />
 </menu>

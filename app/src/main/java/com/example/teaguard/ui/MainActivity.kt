@@ -9,8 +9,10 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.teaguard.R
 import com.example.teaguard.databinding.ActivityMainBinding
+import com.example.teaguard.ui.aboutUs.AboutUsFragment
 import com.example.teaguard.ui.detection.DetectionFragment
 import com.example.teaguard.ui.home.HomeFragment
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -39,17 +42,24 @@ class MainActivity : AppCompatActivity() {
                     replaceFragment(DetectionFragment())
                     true
                 }
-
+                R.id.about_us -> {
+                    replaceFragment(AboutUsFragment())
+                    true
+                }
                 else -> false
             }
         }
-
     }
+
 
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }

@@ -22,6 +22,8 @@ class HistoryDiagnoseRepository private constructor(
         historyDiagnoseDao.delete(historyDiagnose)
     }
 
+     fun getLastHistory() : Flow<HistoryDiagnose> = historyDiagnoseDao.getLastHistory()
+
     companion object {
         @Volatile
         private var instance: HistoryDiagnoseRepository? = null

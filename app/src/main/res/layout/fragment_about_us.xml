@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.aboutUs.AboutUsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/ll_main_hs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/padding_horizontal"
+            android:paddingTop="@dimen/padding_vertical_top">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/greenGeneral"
+                android:text="Tentang Aplikasi TeaGuard"
+                android:layout_gravity="center"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/logo_teaguard"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:justificationMode="inter_word"
+                android:text="TeaGuard adalah aplikasi mobile yang menyediakan informasi tentang hama dan penyakit pada tanaman teh. Aplikasi ini membantu penggiat kebun teh dalam mengelola kebun mereka dengan lebih efisien dan menjadi sumber edukasi bagi wisatawan serta masyarakat umum yang ingin mempelajari tanaman teh. \n\nTeaGuard juga membantu dalam melakukan deteksi terhadap penyakit dan hama tanaman teh menggunakan model Convolutional Neural Network (CNN) untuk melakukan klasifikasi penyakit. Dengan teknologi masa kini, identifikasi masalah pada tanaman teh dapat dilakukan kapan saja dan di mana saja menggunakan kamera smartphone."/>
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_ig"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ig_teaguard"
+                    android:fontFamily="@font/poppins_medium"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/greenGeneral"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="Biodata Anggota &amp; Dosen Pembimbing" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cd_home_screen_analyze"
+                app:cardCornerRadius="15dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#4BA26A"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:id="@+id/rl_home_screen_card_analyze"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/grayBackground"
+                    android:paddingHorizontal="25dp"
+                    android:paddingVertical="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/card_pic"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/pic_nenny"/>
+                    <RelativeLayout
+                        android:id="@+id/analyze_1"
+                        android:layout_toEndOf="@id/card_pic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp">
+
+                        <TextView
+                            android:id="@+id/title_jabatan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_centerInParent="false"
+                            android:layout_centerHorizontal="true"
+                            android:text="Dosen Pembimbing" />
+                        <TextView
+                            style="@style/FragmentHomeCardDiseaseTitle"
+                            android:id="@+id/title_name"
+                            android:layout_below="@id/title_jabatan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Neny Rosmawarni M. Kom" />
+                        <TextView
+                            android:id="@+id/jurusan"
+                            android:layout_below="@id/title_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="S1 Informatika"/>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cd_home_screen_analyzew"
+                app:cardCornerRadius="15dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#4BA26A"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/grayBackground"
+                    android:paddingHorizontal="25dp"
+                    android:paddingVertical="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/card_pic2"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/pic_wisnu"/>
+                    <RelativeLayout
+                        android:layout_toEndOf="@id/card_pic2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp">
+
+                        <TextView
+                            android:id="@+id/title_jabatan2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_centerInParent="false"
+                            android:layout_centerHorizontal="true"
+                            android:text="Ketua" />
+                        <TextView
+                            style="@style/FragmentHomeCardDiseaseTitle"
+                            android:id="@+id/title_name2"
+                            android:layout_below="@id/title_jabatan2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Wisnu Andika" />
+                        <TextView
+                            android:id="@+id/nim2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/title_name2"
+                            android:layout_centerHorizontal="true"
+                            android:text="2110511043"/>
+                        <TextView
+                            android:id="@+id/jurusan2"
+                            android:layout_below="@id/nim2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="S1 Informatika"/>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                app:cardCornerRadius="15dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#4BA26A"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/grayBackground"
+                    android:paddingHorizontal="25dp"
+                    android:paddingVertical="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/card_pic3"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/pic_rizky"/>
+                    <RelativeLayout
+                        android:layout_toEndOf="@id/card_pic3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp">
+
+                        <TextView
+                            android:id="@+id/title_jabatan3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_centerInParent="false"
+                            android:layout_centerHorizontal="true"
+                            android:text="Anggota 1" />
+                        <TextView
+                            style="@style/FragmentHomeCardDiseaseTitle"
+                            android:id="@+id/title_name3"
+                            android:layout_below="@id/title_jabatan3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Rizky Al Arief" />
+                        <TextView
+                            android:id="@+id/nim3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/title_name3"
+                            android:layout_centerHorizontal="true"
+                            android:text="2110511069"/>
+
+                        <TextView
+                            android:id="@+id/jurusan3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/nim3"
+                            android:text="S1 Informatika" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                app:cardCornerRadius="15dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#4BA26A"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/grayBackground"
+                    android:paddingHorizontal="25dp"
+                    android:paddingVertical="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/card_pic4"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/pic_hilmi"/>
+                    <RelativeLayout
+                        android:layout_toEndOf="@id/card_pic4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp">
+
+                        <TextView
+                            android:id="@+id/title_jabatan4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_centerInParent="false"
+                            android:layout_centerHorizontal="true"
+                            android:text="Anggota 2" />
+                        <TextView
+                            style="@style/FragmentHomeCardDiseaseTitle"
+                            android:id="@+id/title_name4"
+                            android:layout_below="@id/title_jabatan4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Hilmi Aziz Zain" />
+                        <TextView
+                            android:id="@+id/nim4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/title_name4"
+                            android:layout_centerHorizontal="true"
+                            android:text="2110511064"/>
+                        <TextView
+                            android:id="@+id/jurusan4"
+                            android:layout_below="@id/nim4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="S1 Informatika"/>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                app:cardCornerRadius="15dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#4BA26A"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/grayBackground"
+                    android:paddingHorizontal="25dp"
+                    android:paddingVertical="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/card_pic5"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/pic_zah"/>
+                    <RelativeLayout
+                        android:layout_toEndOf="@id/card_pic5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp">
+
+                        <TextView
+                            android:id="@+id/title_jabatan5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_centerInParent="false"
+                            android:layout_centerHorizontal="true"
+                            android:text="Anggota 3" />
+                        <TextView
+                            style="@style/FragmentHomeCardDiseaseTitle"
+                            android:id="@+id/title_name5"
+                            android:layout_below="@id/title_jabatan5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_centerHorizontal="true"
+                            android:text="Zah Rainy Raushana Kuwada " />
+                        <TextView
+                            android:id="@+id/nim5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/title_name5"
+                            android:layout_centerHorizontal="true"
+                            android:text="2210511163"/>
+                        <TextView
+                            android:id="@+id/jurusan5"
+                            android:layout_below="@id/nim5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="S1 Informatika"/>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                app:cardCornerRadius="15dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#4BA26A"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/grayBackground"
+                    android:paddingHorizontal="25dp"
+                    android:paddingVertical="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/card_pic6"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/pic_aqilah"/>
+                    <RelativeLayout
+                        android:layout_toEndOf="@id/card_pic6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp">
+
+                        <TextView
+                            android:id="@+id/title_jabatan6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_centerInParent="false"
+                            android:layout_centerHorizontal="true"
+                            android:text="Anggota 4" />
+                        <TextView
+                            style="@style/FragmentHomeCardDiseaseTitle"
+                            android:id="@+id/title_name6"
+                            android:layout_below="@id/title_jabatan6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_centerHorizontal="true"
+                            android:text="Aqilah Qathrunnada Mumtaz" />
+                        <TextView
+                            android:id="@+id/nim6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/title_name6"
+                            android:layout_centerHorizontal="true"
+                            android:text="2210511115"/>
+                        <TextView
+                            android:id="@+id/jurusan6"
+                            android:layout_below="@id/nim6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="S1 Informatika"/>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

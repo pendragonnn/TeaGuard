@@ -3,13 +3,29 @@
     <style name="Base.Theme.TeaGuard" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/greenGeneral</item>
+        <item name="android:windowBackground">@color/grayBackground</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorOnPrimary">@color/black</item>
+    </style>
     <style name="NavigationCardView" parent="@style/Widget.MaterialComponents.CardView">
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut</item>
         <item name="strokeWidth">0dp</item>
     </style>
+    <style name="ButtonGeneral" parent="@style/ShapeAppearanceOverlay.Material3.Corner.Bottom">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Material3.CustomCut</item>
+    </style>
 
+    <style name="ShapeAppearanceOverlay.Material3.CustomCut" parent="">
+        <item name="cornerSize">8dp</item>
+    </style>
     <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
         <item name="cornerSizeTopRight">8dp</item>
         <item name="cornerSizeTopLeft">8dp</item>
@@ -33,7 +49,7 @@
     <!--  DETECTION FRAGMENT START  -->
 
     <style name="FragmentDetectionTitle">
-        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="fontFamily">@font/poppins_bold</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/black</item>

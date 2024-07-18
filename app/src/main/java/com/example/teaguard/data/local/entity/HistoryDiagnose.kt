@@ -14,5 +14,5 @@ data class HistoryDiagnose(
     val imageUri : String,
     val diagnosis : String,
     val recommendation : String,
-    val date : Long
+    val date : String
 ) : Parcelable

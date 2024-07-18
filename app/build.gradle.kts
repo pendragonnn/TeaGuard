@@ -15,8 +15,8 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "BASE_URL", "\"http://100.87.136.13:5000/\"")
     }
 
     buildTypes {
@@ -40,9 +40,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
 }
 
 dependencies {
+    implementation("com.github.yalantis:ucrop:2.2.9")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
@@ -50,6 +53,8 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation("androidx.fragment:fragment-ktx:1.3.6")
+    implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)

@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class DetectionViewModel (private val historyDiagnoseRepository: HistoryDiagnoseRepository) : ViewModel() {
 
     private val _detectionList = MutableSharedFlow<List<HistoryDiagnose>>()
-    private val detectionList : Flow<List<HistoryDiagnose>> = _detectionList.asSharedFlow()
+    val detectionList : Flow<List<HistoryDiagnose>> = _detectionList.asSharedFlow()
 
     init {
         getDetectionList()

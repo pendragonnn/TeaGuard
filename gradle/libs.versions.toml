@@ -9,7 +9,7 @@ appcompat = "1.6.1"
 material = "1.11.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
-tensorflowLiteSupport = "0.1.0"
+tensorflowLiteSupport = "0.3.1"
 tensorflowLiteMetadata = "0.1.0"
 room = "2.5.2"
 

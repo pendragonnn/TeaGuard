@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.teaguard.data.repository.DiseaseRepository
 import com.example.teaguard.data.repository.HistoryDiagnoseRepository
 import com.example.teaguard.di.Injection
+import com.example.teaguard.ui.detection.DetectionViewModel
 import com.example.teaguard.ui.home.HomeViewModel
+import com.example.teaguard.ui.listDisease.DiseaseViewModel
 
 class ViewModelFactory private constructor(
     private val historyDiagnoseRepository: HistoryDiagnoseRepository,
@@ -19,6 +21,12 @@ class ViewModelFactory private constructor(
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(historyDiagnoseRepository, diseaseRepository) as T
             }
+            modelClass.isAssignableFrom(DetectionViewModel::class.java) -> {
+                DetectionViewModel(historyDiagnoseRepository) as T
+            }
+            modelClass.isAssignableFrom(DiseaseViewModel::class.java) -> {
+                DiseaseViewModel(diseaseRepository) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
     }
@@ -30,7 +38,7 @@ class ViewModelFactory private constructor(
         fun getInstance(context: Context): ViewModelFactory {
             return INSTANCE ?: synchronized(this) {
                 val historyDiagnoseRepository = Injection.provideDiagnoseRepository(context)
-                val diseaseRepository = Injection.provideDiseaseRepository(context)
+                val diseaseRepository = Injection.provideDiseaseRepository()
                 ViewModelFactory(historyDiagnoseRepository, diseaseRepository).also {
                     INSTANCE = it
                 }

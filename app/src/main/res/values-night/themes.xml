@@ -1,7 +1,116 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.TeaGuard" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/greenGeneral</item>
+        <item name="android:windowBackground">@color/grayBackground</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorOnPrimary">@color/black</item>
+    </style>
+    <style name="NavigationCardView" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+    <style name="ButtonGeneral" parent="@style/ShapeAppearanceOverlay.Material3.Corner.Bottom">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Material3.CustomCut</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.Material3.CustomCut" parent="">
+        <item name="cornerSize">8dp</item>
+    </style>
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
+        <item name="cornerSizeTopRight">8dp</item>
+        <item name="cornerSizeTopLeft">8dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <!--  DIAGNOSE ACTIVITY START  -->
+
+    <style name="ActivityDiagnoseDiseaseName">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginBottom">25dp</item>
+    </style>
+
+    <!--  DIAGNOSE ACTIVITY END  -->
+
+    <!--  DETECTION FRAGMENT START  -->
+
+    <style name="FragmentDetectionTitle">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginBottom">25dp</item>
+    </style>
+
+    <style name="FragmentDetectionCardDate">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/grayFont</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="FragmentDetectionCardDiseaseTitle">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/greenGeneral</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--  DETECTION FRAGMENT END  -->
+
+    <!--  HOME FRAGMENT START  -->
+
+    <style name="FragmentHomeTitle">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FragmentHomeCardTutorial">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="FragmentHomeAnalyzeTitle">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:layout_marginTop">14dp</item>
+        <item name="android:layout_marginBottom">14dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FragmentHomeCardDate">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/grayFont</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="FragmentHomeCardDiseaseTitle">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/greenGeneral</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--  HOME FRAGMENT END  -->
+
+    <style name="Theme.TeaGuard" parent="Base.Theme.TeaGuard" />
 </resources>

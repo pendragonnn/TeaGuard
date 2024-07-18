@@ -13,7 +13,7 @@ object Injection {
 
         return HistoryDiagnoseRepository.getInstance(dao)
     }
-    fun provideDiseaseRepository(context : Context) : DiseaseRepository {
+    fun provideDiseaseRepository() : DiseaseRepository {
         val apiService = ApiConfig.getApiService()
 
         return DiseaseRepository.getInstance(apiService)

@@ -5,7 +5,7 @@
     app:cardCornerRadius="15dp"
     app:strokeWidth="1dp"
     app:strokeColor="#4BA26A"
-    android:layout_marginBottom="16dp"
+    android:layout_marginBottom="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <RelativeLayout
@@ -17,34 +17,41 @@
         android:paddingVertical="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/img_wereng"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_result_diagnosis"
             android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/hs_wereng_img"/>
+            android:layout_height="75dp">
+            <ImageView
+                android:id="@+id/img_result_diagnosis"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/hs_wereng_img"/>
+        </com.google.android.material.card.MaterialCardView>
+
         <RelativeLayout
             android:id="@+id/analyze_1"
-            android:layout_toEndOf="@id/img_wereng"
+            android:layout_toEndOf="@id/card_result_diagnosis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp">
             <TextView
                 style="@style/FragmentHomeCardDate"
-                android:id="@+id/title_wereng"
+                android:id="@+id/date_result_diagnosis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="11 November 2023" />
             <TextView
                 style="@style/FragmentHomeCardDiseaseTitle"
-                android:layout_below="@id/title_wereng"
+                android:id="@+id/title_result_diagnosis"
+                android:layout_below="@id/date_result_diagnosis"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Wereng" />
+                android:text="Algal Leaf" />
             <ImageView
                 android:id="@+id/img_arrow2"
-                android:layout_below="@id/title_wereng"
-                android:layout_toEndOf="@id/title_wereng"
+                android:layout_below="@id/date_result_diagnosis"
+                android:layout_toEndOf="@id/date_result_diagnosis"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_margin="12dp"
