@@ -41,6 +41,7 @@
                 android:src="@drawable/vector_tea"/>
 
             <TextView
+                android:id="@+id/tv_desc_disease"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Penjelasan Penyakit"
@@ -61,6 +62,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/tv_title_prevention"
                 tools:text="Pencegahan"
                 android:textSize="18sp"
                 android:fontFamily="@font/poppins_bold"
@@ -77,6 +79,7 @@
                 android:textSize="16sp"/>
 
             <TextView
+                android:id="@+id/tv_title_recommended"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Rekomendasi Penanganan"
