@@ -60,6 +60,9 @@ class DiseaseDetailActivity : AppCompatActivity() {
         Glide.with(this)
             .load(imageUrl)
             .into(binding.imageDisease)
+        binding.tvDescDisease.text = "Penjelasan Penyakit"
+        binding.tvTitlePrevention.text = "Pencegahan"
+        binding.tvTitleRecommended.text = "Rekomendasi Penanganan"
         binding.titleDisease.text = diseaseDetail.data?.diseaseName
         binding.descDisease.text = diseaseDetail.data?.diseaseExplanation
         binding.descPrevention.text = diseaseDetail.data?.diseasePrevention
