@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -37,6 +39,9 @@ class DiagnoseDetailActivity : AppCompatActivity() {
         historyDiagnose = intent.getParcelableExtra("HISTORY_DIAGNOSE")!!
         returnFragment = intent.getStringExtra("RETURN_FRAGMENT")!!
 
+        if (historyDiagnose.name == "Healthy") {
+            binding.btnHsGallery.visibility = View.GONE
+        }
         binding.tvTitle.text = historyDiagnose.name
         binding.ivImgTea.setImageURI(Uri.parse(historyDiagnose.imageUri))
         binding.viewPager.adapter = VPAdapter(this, historyDiagnose)

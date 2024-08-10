@@ -115,12 +115,17 @@ fun saveImageToLocalStorage(context: Context, image: Bitmap): Uri {
     val filesDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
     val imageFile = File(filesDir, filename)
 
-    val fos = FileOutputStream(imageFile)
-    image.compress(Bitmap.CompressFormat.JPEG, 100, fos)
-    fos.flush()
-    fos.close()
+    FileOutputStream(imageFile).use { fos ->
+        fos.write(image.toByteArray())
+        fos.flush()
+    }
 
-    val reducedFile = imageFile.reduceFileImage()
+    return Uri.fromFile(imageFile)
+}
 
-    return Uri.fromFile(reducedFile)
+fun Bitmap.toByteArray(): ByteArray {
+    ByteArrayOutputStream().use { stream ->
+        this.compress(Bitmap.CompressFormat.PNG, 100, stream)
+        return stream.toByteArray()
+    }
 }
